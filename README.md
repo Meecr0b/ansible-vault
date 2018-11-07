@@ -218,10 +218,11 @@ The role defines variables in `defaults/main.yml`:
 - Vault listener configuration template file
 - Default value: *vault_listener.hcl.j2*
 
-### `vault_backend_consul`
+### `vault_backend`
 
-- Backend consul template filename
-- Default value: `backend_consul.j2`
+- Vault backend configuration
+  - Supported values: consul, file
+- Default value: *consul*
 
 ### `vault_cluster_address`
 
@@ -478,10 +479,10 @@ ansible-playbook -i hosts site.yml --extra-vars "vault_datacenter=maui"
 ```
 
 Specify a template file with a different backend definition
-(see `templates/backend_consul.j2`):
+(see `templates/vault_backend_file.j2`):
 
 ```
-ansible-playbook -i hosts site.yml --extra-vars "vault_backed=backend_file.j2"
+ansible-playbook -i hosts site.yml --extra-vars "vault_backend=file"
 ```
 
 You need to make sure that the template file `backend_file.j2` is in the
